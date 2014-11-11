@@ -41,6 +41,8 @@
         <div class="center">
           <a href="https://cdn.rawgit.com/MegaScratchUserscript/Mega-Scratch-Userscript/master/msu-base.user.js"
           class="button-link">Install MSU</a>
+		  <p class="error" id="nols">Your browser doesn't seem to have local storage support, which is required for MSU to work.
+		  Please upgrade to the latest version of your browser or switch to Google Chrome or Mozilla Firefox.</p>
         </div>
         <h5 class="mini-header">Setting Your Preferences in MSU</h5>
         <p>MSU is pretty easy to use (it does everything almost automatically!) but once you&#39;ve installed it, you may want to
@@ -79,5 +81,21 @@
       </div>
     </div>
     <div class="footer">Created from scratch (with &hearts; and swag) by the Scratch Community.</div>
+	<script type="text/javascript">
+		function supportsLs() {
+			try {
+				localStorage.setItem("swag", "swag");
+				localStorage.removeItem("swag");
+				return true;
+			} catch(e) {
+				return false;
+			}
+		}
+		if(!supportsLs()){
+			document.getElementsByClassName("button-link")[0].className += " disabled";
+			document.getElementsByClassName("button-link")[0].href = "javascript:void(0)";
+			document.getElementById("nols").style.display = "block";
+		}
+	</script>
   </body>
 </html>

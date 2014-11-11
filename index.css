@@ -87,16 +87,21 @@ body {
     border-radius: 10px;
     transition: background 0.3s;
 }
-.button-link:hover {
+.button-link:not(.disabled):hover {
 	border: 3px solid white;
 	padding: 2px 17px;
         background:#1177EC;
 }
-.button-link:active {
+.button-link:not(.disabled):active {
 	position: relative;
 	top: -1px;
 	padding: 4px 19px;
 	margin-bottom: -4px;
+}
+
+.button-link.disabled {
+	color: #aaa;
+	background: #3986C4;
 }
 
 .footer {
@@ -141,4 +146,9 @@ body {
 
 .image:hover:after {
 	opacity: 0;
+}
+
+p.error {
+	color: red;
+	display: none;
 }
